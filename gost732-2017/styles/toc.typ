@@ -48,23 +48,15 @@
             it.element.supplement
         };
 
+        let indent = (" " * 2) * (it.level - 1);
+
         let text = if should_be_unnumbered_heading(it.element) {
-            // it.indented(
-            //     none,
-            //     [ #upper[#text] #box(width: 1fr, it.fill) #it.page() ]
-            // )
-            // par(first-line-indent: 0cm, justify: true)[ #upper[#text] #box(width: 1fr, it.fill) #it.page() ]
-            upper[#text]
+            upper[#indent #text]
         } else {
-            // it.indented(
-            //     [ #it.prefix() #h(-0.5em) ],
-            //     [ #text #box(width: 1fr, it.fill) #it.page() ]
-            // )
-            // par(first-line-indent: 0cm, justify: true)[ #it.prefix() #text #box(width: 1fr, it.fill) #it.page() ]
-            [ #it.prefix() #text ]
+            [ #indent #it.prefix() #text ]
         }
 
-        par(first-line-indent: 0cm, justify: true)[ #text #box(width: 1fr, it.fill) #it.page() ]
+        par(first-line-indent: 0em, justify: true)[ #text #box(width: 1fr, it.fill) #it.page() ]
     }
     
     content
